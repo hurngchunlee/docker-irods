@@ -3,8 +3,8 @@
 This repository contains containerised iRODS components:
 
 - `postgres`: PostgreSQL database for iCAT
-- `irods-icat`: iRODS iCAT server
-- `irods-resc`: iRODS resource servers
+- `irods-icat`: iRODS iCAT server (4.2.x)
+- `irods-resc`: iRODS resource servers (4.2.x)
 
 The intetion is to provide a functioning iRODS instanace with the following resource hierachy:
 
