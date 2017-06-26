@@ -1,0 +1,88 @@
+version: '2'
+
+services:
+
+  icat-db:
+     build: ./postgres
+#     restart: unless-stopped
+     expose:
+       - "5432"
+
+  irods-icat:
+    build: ./irods-icat
+    hostname: irods-icat
+#    restart: unless-stopped
+    volumes:
+      - /dev/urandom:/dev/random
+#      - demo-irods-icat-config:/etc/irods
+#      - demo-irods-icat-logs:/var/lib/irods/iRODS/server/log
+    environment:
+      - IRODS_ICAT_DBSERVER=icat-db
+      - IRODS_ZONE_PORT=1247
+      - IRODS_ZONE_NAME=demo
+      - IRODS_WEBDAV_HOST=irods-webdav
+      - IRODS_RESOURCE_OL=irods-resc-ol
+      - IRODS_RESOURCE_NL=irods-resc-nl
+    ports:
+      - 1247:1247
+      - 20000-20199:20000-20199
+    depends_on:
+      - icat-db
+
+  irods-resc-ol:
+    build: ./irods-resc
+    hostname: irods-resc-ol
+#    restart: unless-stopped
+    volumes:
+      - /dev/urandom:/dev/random
+#      - demo-irods-resc-ol-config:/etc/irods
+#      - demo-irods-resc-ol-logs:/var/lib/irods/iRODS/server/log
+#      - demo-irods-resc-ol-vault:/var/lib/irods/Vault
+    environment:
+      - IRODS_ICAT_HOST=irods-icat
+      - IRODS_ZONE_PORT=1247
+      - IRODS_ZONE_NAME=demo
+    expose:
+      - "1247"
+      - "20000-20199"
+    depends_on:
+      - irods-icat
+
+  irods-resc-nl:
+    build: ./irods-resc
+    hostname: irods-resc-nl
+#    restart: unless-stopped
+    volumes:
+      - /dev/urandom:/dev/random
+#      - demo-irods-resc-nl-config:/etc/irods
+#      - demo-irods-resc-nl-logs:/var/lib/irods/iRODS/server/log
+#      - demo-irods-resc-nl-vault:/var/lib/irods/Valut
+    environment:
+      - IRODS_ICAT_HOST=irods-icat
+      - IRODS_ZONE_PORT=1247
+      - IRODS_ZONE_NAME=demo
+    expose:
+      - "1247"
+      - "20000-20199"
+    depends_on:
+      - irods-icat
+
+#volumes:
+#  demo-irods-icat-config:
+#    external: true
+#  demo-irods-icat-logs:
+#    external: true
+#  demo-irods-resc-ol-config:
+#    external: true
+#  demo-irods-resc-ol-logs:
+#    external: true
+#  demo-irods-resc-ol-vault:
+#    external: true
+#  demo-irods-resc-nl-config:
+#    external: true
+#  demo-irods-resc-nl-logs:
+#    external: true
+#  demo-irods-resc-nl-vault:
+#    external: true
+#  demo-postgres-data:
+#    external: true
