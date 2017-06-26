@@ -37,14 +37,7 @@ ENV IRODS_RESOURCE_NL=irods-resource-nl
 ## iRODS webdav server name
 ENV IRODS_WEBDAV_HOST=webdav
 
-## copy rdm-irods-rules.tar.gz into container and install requirements
-#RUN yum -y install gcc-c++ bc pam_oath oathtool unzip pam_script
-#RUN if [ ! -d /src ]; then mkdir /src; fi
-#COPY rdm-irods-rules.tar.gz /src
-
 ## copy scripts
-#COPY genresp.sh docker-entrypoint.sh irods_login.sh fix_irods_environment.py /
-#RUN chmod +x /genresp.sh /docker-entrypoint.sh /irods_login.sh /fix_irods_environment.py
 COPY genresp.sh docker-entrypoint.sh irods_login.sh mkresc.sh /
 RUN chmod +x /genresp.sh /docker-entrypoint.sh /irods_login.sh /mkresc.sh
 
