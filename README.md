@@ -2,7 +2,7 @@
 
 This repository contains containerised iRODS components:
 
-- `icat-db`: PostgreSQL
+- `postgres`: PostgreSQL database for iCAT
 - `irods-icat`: iRODS iCAT server
 - `irods-resc`: iRODS resource servers
 
@@ -44,7 +44,7 @@ Each container exposes volumes for data persistency.  The list of volumes are pr
 
 | container  | path in container               | usage                         |
 |------------|---------------------------------|-------------------------------|
-| icat-db    | /var/lib/postgresql/data        | database storage              |
+| postgres   | /var/lib/postgresql/data        | database storage              |
 | irods-icat | /etc/irods                      | iCAT configuration            |
 | irods-icat | /var/lib/irods/iRODS/server/log | iCAT server log               |
 | irods-resc | /etc/irods                      | resource server configuration |
@@ -77,6 +77,6 @@ There are several environment variables can be set for setting up iRODS.  The va
 | IRODS_NEGOTIATION_KEY     | TEMPORARY_32byte_negotiation_key | irods-icat, irods-resc |
 | IRODS_CONTROLPLANE_KEY    | TEMPORARY__32byte_ctrl_plane_key | irods-icat, irods-resc |
 
-## PostgreSQL server variables
+## PostgreSQL
 
 The environment variables IRODS_ICAT_DB(SERVER|PORT|NAME|USER|PASS) have to match the setup in the `icat-db` container that is based on the official [PostgreSQL container](https://hub.docker.com/r/_/postgres/).
