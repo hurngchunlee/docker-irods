@@ -79,4 +79,6 @@ There are several environment variables can be set for setting up iRODS.  The va
 
 ## PostgreSQL
 
-The environment variables IRODS_ICAT_DB(SERVER|PORT|NAME|USER|PASS) have to match the setup in the `icat-db` container that is based on the official [PostgreSQL container](https://hub.docker.com/r/_/postgres/).
+The environment variables IRODS_ICAT_DB(SERVER|PORT|NAME|USER|PASS) should match the setup in the `icat-db` container that is based on the official [PostgreSQL container](https://hub.docker.com/r/_/postgres/).
+
+The iCAT database is created upon the start of the PostgreSQL container using [this script](https://github.com/hurngchunlee/docker-irods/blob/master/postgres/init-icat-db.sh). 
