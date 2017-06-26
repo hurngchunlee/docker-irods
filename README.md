@@ -1,12 +1,12 @@
 # iRODS Docker Containers
 
-This repository contains containerised iRODS components:
+This repository consists of three containerised [iRODS](https://irods.org) components:
 
 - `postgres`: PostgreSQL database for iCAT
 - `irods-icat`: iRODS iCAT server (4.2.x)
 - `irods-resc`: iRODS resource servers (4.2.x)
 
-The intetion is to provide a functioning iRODS instanace with the following resource hierachy:
+The intetion is to provide a working iRODS system for demonstration or test. It also builts in the following iRODS resource hierachy:
 
 ```
 replResc:replication
