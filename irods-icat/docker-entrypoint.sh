@@ -53,6 +53,7 @@ if [ "$1" == "irods" ]; then
 
     echo "kickoff ${IRODS_RESOURCE_OL}" | nc ${IRODS_RESOURCE_OL} 4321
     echo "kickoff ${IRODS_RESOURCE_NL}" | nc ${IRODS_RESOURCE_NL} 4321
+    echo "kickoff ${IRODS_WEBDAV_HOST}" | nc ${IRODS_WEBDAV_HOST} 4321
 
     echo "iCAT ${HOSTNAME} ready!"
 

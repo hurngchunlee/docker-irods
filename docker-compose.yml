@@ -67,6 +67,22 @@ services:
     depends_on:
       - irods-icat
 
+  irods-webdav:
+    build: ./davrods
+    hostname: irods-webdav
+#    restart: unless-stopped
+    volumes:
+      - /dev/urandom:/dev/random
+      - ./davrods/config:/config
+    environment:
+      - IRODS_ICAT_HOST=irods-icat
+      - IRODS_ZONE_PORT=1247
+      - IRODS_ZONE_NAME=demo
+    ports:
+      - 443:443
+    depends_on:
+      - irods-icat
+
 #volumes:
 #  demo-irods-icat-config:
 #    external: true
