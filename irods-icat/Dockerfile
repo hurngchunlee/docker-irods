@@ -5,13 +5,20 @@ MAINTAINER Hurng-Chun Lee <h.lee@donders.ru.nl>
 RUN yum -y install epel-release wget curl nc which
 RUN rpm --import https://packages.irods.org/irods-signing-key.asc \
  && wget -qO - https://packages.irods.org/renci-irods.yum.repo | tee /etc/yum.repos.d/renci-irods.yum.repo
-RUN yum -y install irods-server irods-database-plugin-postgres \
+RUN yum -y install irods-server irods-database-plugin-postgres irods-devel \
+ irods-externals-clang3.8-0 irods-externals-cmake3.5.2-0.x86_64 \
+ irods-externals-imagemagick7.0.3-0.x86_64 \
  && useradd -d /var/lib/irods irods \
  && yum clean all \
  && rm -rf /var/cache/yum/* \
  && rm -rf /tmp/*
 
 RUN yum -y install sudo
+
+## installing irods_training package
+RUN yum -y install gcc gcc-c++ unzip openssl-devel rpm-build
+COPY irods_training_installer.sh /
+RUN chmod +x /irods_training_installer.sh && /irods_training_installer.sh
 
 ## environment variables for container runtime
 ENV IRODS_ADMIN_USER=irods
