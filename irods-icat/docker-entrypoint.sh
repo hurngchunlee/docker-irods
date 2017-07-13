@@ -31,6 +31,11 @@ if [ "$1" == "irods" ]; then
         cp /var/lib/irods/.irods/irods_environment.json /etc/irods/irods_environment.json
         cp /var/lib/irods/.odbc.ini /etc/irods/.odbc.ini
 
+        ## enable the python rule engine
+        if [ -f /irods_python-re_installer.py ]; then
+            ./irods_python-re_installer.py
+        fi
+
         touch /etc/irods/.provisioned
     fi
 

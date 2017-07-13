@@ -20,6 +20,11 @@ RUN yum -y install gcc gcc-c++ unzip openssl-devel rpm-build
 COPY irods_training_installer.sh /
 RUN chmod +x /irods_training_installer.sh && /irods_training_installer.sh
 
+## installing irods python rule-engine plugin
+RUN yum -y install irods-rule-engine-plugin-python
+COPY irods_python-re_installer.py /
+RUN chmod +x /irods_python-re_installer.py
+
 ## environment variables for container runtime
 ENV IRODS_ADMIN_USER=irods
 ENV IRODS_ADMIN_PASS=test123
