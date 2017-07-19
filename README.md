@@ -61,9 +61,9 @@ There are several environment variables can be set for setting up iRODS.  The va
 |---------------------------|----------------------------------|------------|
 | IRODS_ICAT_DBSERVER       | icat-db                          | irods-icat |
 | IRODS_ICAT_DBPORT         | 5432                             | irods-icat |
-| IRODS_ICAT_DBNAME         | ICAT                             | irods-icat |
-| IRODS_ICAT_DBUSER         | irods                            | irods-icat |  
-| IRODS_ICAT_DBPASS         | test123                          | irods-icat |
+| IRODS_ICAT_DBNAME         | ICAT                             | irods-icat, postgres |
+| IRODS_ICAT_DBUSER         | irods                            | irods-icat, postgres |  
+| IRODS_ICAT_DBPASS         | test123                          | irods-icat, postgres |
 | IRODS_RESOURCE_OL         | irods-resc-ol                    | irods-icat |
 | IRODS_RESOURCE_NL         | irods-resc-nl                    | irods-icat | 
 | IRODS_ZONE_NAME           | rdmtst                           | irods-icat, irods-resc |
