@@ -16,13 +16,13 @@ RUN ( mkdir -p /tmp )
 WORKDIR /tmp
 
 # install required iRODS runtime and libraries
-RUN yum -y install irods-runtime irods-externals-boost1.60.0-0 irods-externals-jansson2.7-0
+RUN yum -y install irods-runtime-4.2.10 irods-externals-boost1.60.0-0 irods-externals-jansson2.7-0
 
 # install Davrods
-ARG davrods_version=4.2_1.1.1
+ARG davrods_version=4.2.10_1.5.0
 ARG davrods_github_tag=$davrods_version
-RUN ( wget https://github.com/UtrechtUniversity/davrods/releases/download/$davrods_github_tag/davrods-$davrods_version-1.el7.centos.x86_64.rpm )
-RUN ( rpm -ivh davrods-$davrods_version-1.el7.centos.x86_64.rpm )
+RUN ( wget https://github.com/UtrechtUniversity/davrods/releases/download/$davrods_github_tag/davrods-$davrods_version-1.rpm )
+RUN ( rpm -ivh davrods-$davrods_version-1.rpm )
 RUN ( mv /etc/httpd/conf.d/davrods-vhost.conf /etc/httpd/conf.d/davrods-vhost.conf.org )
 
 # cleanup RPMs
