@@ -4,7 +4,7 @@ MAINTAINER Hurng-Chun Lee <h.lee@donders.ru.nl>
 
 RUN yum -y install epel-release wget curl nc which
 RUN rpm --import https://packages.irods.org/irods-signing-key.asc \
- && wget -qO - https://packages.irods.org/renci-irods.yum.repo | tee /etc/yum.repos.d/renci-irods.yum.repo
+ && wget --no-check-certificate -qO - https://packages.irods.org/renci-irods.yum.repo | tee /etc/yum.repos.d/renci-irods.yum.repo
 RUN yum -y install irods-server \
  && useradd -d /var/lib/irods irods \
  && yum clean all \
